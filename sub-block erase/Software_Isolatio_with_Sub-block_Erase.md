@@ -11,4 +11,4 @@ ABSTRACT:  提出采用软隔离（利用free or invalid page 作为隔离）的
 * 存在问题：1.uneven wearing distribution to sub-blocks of the same block 2. sub-block erase disturbance issue（被擦除的sub-block的紧邻子线会被影响，因为子线间电压差距拉大）
 * 目前方法：采用硬隔离
 
-![](image/Software Isolation with Sub-block Erase/1634199019617.png)
+![1634199662869.png](image/Software_Isolatio_with_Sub-block_Erase/1634199662869.png)
