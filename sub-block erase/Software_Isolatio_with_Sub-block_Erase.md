@@ -47,4 +47,21 @@ Nvp (resp.Nisp) is the number of valid pages that need to be copied out of the v
 
 ![](image/Software_Isolatio_with_Sub-block_Erase/1634226081318.png)
 
-**How to choose Erase Type:** 如何sub-block erase 的RB比整个擦除高，那就sub-block erase， 反之整个擦除
+**How to choose Erase Type:** 如何sub-block erase 的RB比整个擦除高，那就sub-block erase, 反之整个擦除
+
+如何计算每个block的最大RB？
+
+**Greedy Scanning Method**
+
+双重循环，计算每种组合情况，选取最大
+
+![](image/Software_Isolatio_with_Sub-block_Erase/1634268409733.png)
+
+**Marching-based Scanning Method**
+
+考虑wear leveling，从上次擦除的地方向后扫描，一次循环
+
+![](image/Software_Isolatio_with_Sub-block_Erase/1634268478402.png)
+
+
+note：1.整个block作为isolation会不会太浪费了？2.无法选取不连续的sub-block
