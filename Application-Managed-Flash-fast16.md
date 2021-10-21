@@ -21,3 +21,34 @@ AMF基本规则，不允许用户覆盖写，除非原本数据已经被明确�
 一个sector（4KB）只能被写一次，除非其所在segment被命令TRIM
 
 一个segment被分配到多个不同通道上的块上，提高带宽
+
+**AMF Log-structured File System**
+
+**inode map**：keep track of inodes scattered across the storage space
+
+每个entry 8B，4B为inode number，4B为location in data segment
+
+将map划分为block，每个block4KB，并将block分散到空闲空间中
+
+如何找到相应inode？
+
+![](image/Application-Managed-Flash-fast16/1634824802016.png)
+
+在DRAM中保持一张指向inode-map block的表TIMB
+
+首先在内存中查找TIMB找出包含该inode的inode-map block，再在inode-map中找出指向相应的inode
+
+**inode-map segments 的GC?**
+
+
+**check-points**：point to the inode map and keep the consistent state of the file system
+
+如何保持一致性？
+
+![img](image/Application-Managed-Flash-fast16/1634823081726.png)
+
+保存两个固定segment，并标记其版本号，写一个时擦除另外一个。（磨损不均衡？？？？）
+
+**直接apend相比overwrite高效？**
+
+LFS的gc会导致dirty blocks的无效迁移
