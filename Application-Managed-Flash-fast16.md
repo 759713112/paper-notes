@@ -52,3 +52,14 @@ AMF基本规则，不允许用户覆盖写，除非原本数据已经被明确�
 **直接apend相比overwrite高效？**
 
 LFS的gc会导致dirty blocks的无效迁移
+
+**AMF Flash Translation Layer**
+
+保存logical segment到physical segment（多个block）
+
+wear leveling：每次allocate physical segment时选取相应通道磨损最小的
+
+**some think**
+
+1. 目前来说，3D Flash的一个block已经非常大了，再以多个block作为一个segment为擦除单位是不是太大了？？？
+2. 没有inner block磨损均衡，
